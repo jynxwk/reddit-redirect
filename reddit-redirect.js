@@ -6,6 +6,8 @@
 // @author       Mxrc
 // @match        *://www.google.com/*
 // @icon         https://www.mxrc.cloud/favicon.png
+// @updateURL    https://github.com/jynxwk/reddit-redirect/raw/main/reddit-redirect.js
+// @downloadURL  https://github.com/jynxwk/reddit-redirect/raw/main/reddit-redirect.js
 // @run-at       document-start
 // ==/UserScript==
 
