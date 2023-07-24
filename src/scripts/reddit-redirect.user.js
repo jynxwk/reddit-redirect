@@ -2,7 +2,7 @@
 // @name         Google Reddit Redirect
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Redirect from a r/[slug] search to https://reddit.com/r/[slug]
+// @description  Redirects any Google search starting with "r/" to the corresponding reddit page.
 // @author       Mxrc
 // @match        *://www.google.com/*
 // @icon         https://www.mxrc.cloud/favicon.png
