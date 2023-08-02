@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Google Reddit Redirect
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Redirects any Google search starting with "r/" to the corresponding reddit page.
+// @version      1.1
+// @description  Redirects any Google search starting with "r/" to the corresponding Reddit page.
 // @author       Mxrc
-// @match        *://www.google.com/*
+// @match        *://www.google.com/search?*
 // @icon         https://www.mxrc.cloud/favicon.png
 // @updateURL    https://github.com/jynxwk/reddit-redirect/raw/main/src/scripts/reddit_redirect.js
 // @downloadURL  https://github.com/jynxwk/reddit-redirect/raw/main/src/scripts/reddit_redirect.js
@@ -13,18 +13,19 @@
 
 (function() {
     'use strict';
-        const originalOpen = XMLHttpRequest.prototype.open;
+    const originalOpen = XMLHttpRequest.prototype.open;
 
-        XMLHttpRequest.prototype.open = function(method, url) {
-            if (url.includes('/search') && method === 'GET') {
-                const urlParams = new URLSearchParams(url.split('?')[1]);
-                const searchQuery = urlParams.get('q');
+    XMLHttpRequest.prototype.open = function(method, url) {
+        if (url.includes('/search') && method === 'GET') {
+            const urlParams = new URLSearchParams(url.split('?')[1]);
+            const searchQuery = urlParams.get('q');
 
-                if (searchQuery.startsWith("r/") && !searchQuery.includes(" ")) {
-                    window.location.href = `https://reddit.com/${searchQuery}`
-                }
+            if (searchQuery.startsWith("r/") && !searchQuery.includes(" ")) {
+                window.location.href = `https://reddit.com/${searchQuery}`;
+                return;
             }
+        }
 
-            return originalOpen.apply(this, arguments);
-        };
+        return originalOpen.apply(this, arguments);
+    };
 })();
